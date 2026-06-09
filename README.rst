@@ -1,7 +1,7 @@
 ===============================
 Markdown to MediaWiki Converter
 ===============================
-.. image:: /mw2md.png
+.. image:: /images/mw2md.png
    :alt: Banner
 This software, written in *Python* using several libraries, will handle documents' source-codes using either **Markdown** or **MediaWiki** markup languages and convert them based on changing the commands to highlight text.
 
@@ -10,7 +10,7 @@ Planning
 
 Functional Requirements
 -----------------------
-.. image:: /toMarkdown.png
+.. image:: /images/toMarkdown.png
    :alt: A model on how the "toMarkdown" command should work.
 The software must convert documents based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regular expressions present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown.
 
@@ -18,7 +18,7 @@ As an exception treated, the software will only open and read text-based files. 
 
 Non-functional Requirements
 ---------------------------
-.. image:: /toMediawiki.png
+.. image:: /images/toMediawiki.png
    :alt: A model on how the "toMediawiki" command should work.
 
 Because it is still just a model, the software, for a while, will run in the form of a shell (MS-DOS, Bash, etc.)'s command. I plan in the future to make it either:
@@ -31,7 +31,7 @@ Markup languages
 
 MediaWiki
 ---------
-.. image:: /mediawiki.svg
+.. image:: /images/mediawiki.svg
    :alt: MediaWiki's logo
 
 This is the markup language used in multiple Wiki websites like `Wikipedia <http://en.wikipedia.org>`_, `FANDOM <http://fandom.com>`_, `wiki.gg <http://wiki.gg>`_, `Miraheze <http://miraheze.org>`_ and many others. The three latter websites are the main wiki hosters.
@@ -157,7 +157,7 @@ Here is my "wikiography" (pages I have created or updated), the best I can remem
 
 Markdown
 --------
-.. image:: /markdown.svg
+.. image:: /images/markdown.svg
    :alt: Markdown's logo
 
 This is the markup language used in GitHub (and other code versioning websites) for documents like README, CONTRIBUTING, LICENSE, etc.
@@ -232,7 +232,7 @@ Comparison table
      
 License
 =======
-.. image:: /gplv3.svg
+.. image:: /images/gplv3.svg
    :alt: GNU General Public License v3.0's logo
 This software is open-source by using Free Software Foundation's *GNU General Public License*, particularly the version 3.0.
 
