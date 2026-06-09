@@ -2,8 +2,6 @@
 Markdown to MediaWiki Converter
 ===============================
 
-Abstract
-========
 This software, written in *Python* using several libraries, will handle documents' source-codes using either **Markdown** or **MediaWiki** markup languages and convert them based on changing the commands to highlight text.
 
 Planning
