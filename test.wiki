@@ -1,0 +1,23 @@
+<blockquote>This file will be translated from MEDIAWIKI to MARKDOWN.</blockquote>
+{{quote|This file will be translated from MEDIAWIKI to MARKDOWN.}}
+[[File:markdown.svg|Markdown]]
+[[File:mediawiki.svg]]
+=Header h1a=
+= Header h1b =
+==Header h2a==
+== Header h2b ==
+=== Header h3 ===
+==== Header h4 ====
+===== Header h5 =====
+====== Header h6 ======
+'''''Boltalic'''''
+'''Bold'''
+''Italic''
+<u>Underlined</u>
+<s>Strikethrough</s>
+<code>Code</code>
+<pre>
+Blockcodes
+</pre>
+
+'''Streaming majors:''' [http://netflix.com/ Netflix] by Netflix, [http://youtube.com/ YouTube] by Google, [http://primevideo.com/ Prime Video] by Amazon, [http://tv.apple.com/ Apple TV] by Apple, [http://disneyplus.com/ Disney+] by Disney, [http://hbomax.com/ HBO Max] by Warner Bros., [http://paramountplus.com/ Paramount+] by Paramount and [http://crunchyroll.com/ Crunchyroll] by Sony Pictures.
