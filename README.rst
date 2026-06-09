@@ -19,6 +19,7 @@ Non-functional Requirements
 ---------------------------
 .. image:: /toMediawiki.png
    :alt: A model on how the "toMediawiki" command should work.
+
 Because it is still just a model, the software, for a while, will run in the form of a shell (MS-DOS, Bash, etc.)'s command. I plan in the future to make it either:
  * A software for Windows, macOS and Linux by using Python's user interface libraries like *PySimpleGUI* or *tkInter*;
  * An application for Android and iOS;
@@ -218,10 +219,10 @@ Comparison table
    * - ``<u> </u>``
      - Underlining
      - ``<u> </u>``
-   * - `` ` ` ``
+   * - ``` ```
      - In-line code
      - ``<code> </code>``
-   * - `` ``` ``` ``
+   * - ``````` ```````
      - Blockcode
      - ``<pre> </pre>``
    * - ``[GitHub](http://github.com)``
