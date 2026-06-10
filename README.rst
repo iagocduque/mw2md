@@ -5,6 +5,23 @@ Markdown to MediaWiki Converter
    :alt: Banner
 This software, written in *Python* using several libraries, will handle documents' source-codes using either **Markdown** or **MediaWiki** markup languages and convert them based on changing the commands to highlight text.
 
+Content
+=======
+1. `Planning <#planning>`_
+
+ * `Functional Requirements <#functional-requirements>`_
+ * `Non-functional Requirements <#non-functional-requirements>`_
+
+2. `Markup languages <#markup-languages>`_
+
+ * `MediaWiki <#mediawiki>`_
+ * `Markdown <#markdown>`_
+ * `Comparison table <#comparison-table>`_
+
+3. `License <#license>`_
+4. `Copyright <#copyright>`_
+
+
 Planning
 ========
 
@@ -12,19 +29,24 @@ Functional Requirements
 -----------------------
 .. image:: /images/toMarkdown.png
    :alt: A model on how the "toMarkdown" command should work.
-The software must convert documents based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regular expressions present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown.
+The software must convert documents based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regular expressions present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown. Check the `Comparison table <#comparison-table>`_ section for further explaining.
 
 As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``*.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``*.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``*.dll``, etc.) and others **will not be opened.**
+
+Considering the program is, for a while, for a shell:
+
+* **Linux:** A Terminal should be opened based on the directory (folder) the program is in, using the ``./toMarkdown.py file.txt`` command. Make sure to check if the Python-coded program is able to run with ``ls -l`` and, if not, use the ``chmod u+x ./toMarkdown.py`` to make it executable.
+
 
 Non-functional Requirements
 ---------------------------
 .. image:: /images/toMediawiki.png
    :alt: A model on how the "toMediawiki" command should work.
-
 Because it is still just a model, the software, for a while, will run in the form of a shell (MS-DOS, Bash, etc.)'s command. I plan in the future to make it either:
  * A software for Windows, macOS and Linux by using Python's user interface libraries like *PySimpleGUI* or *tkInter*;
  * An application for Android and iOS;
  * A website by using HTML, JavaScript and Cascading Style Sheets.
+
  
 Markup languages
 ================
