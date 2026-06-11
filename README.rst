@@ -3,7 +3,7 @@ Markdown to MediaWiki Converter
 ===============================
 .. image:: /images/mw2md.png
    :alt: Banner
-This software, written in *Python* using several libraries, will handle documents' source-codes using either **Markdown** or **MediaWiki** markup languages and convert them based on changing the commands to highlight text.
+This software, written in *Python* using the "re" (regex) library, will handle documents' source-codes using either **Markdown** or **MediaWiki** markup languages and convert them based on changing regular expressions (commands) to highlight text.
 
 Content
 =======
@@ -18,8 +18,9 @@ Content
  * `Markdown <#markdown>`_
  * `Comparison table <#comparison-table>`_
 
-3. `License <#license>`_
-4. `Copyright <#copyright>`_
+3. `Use of AI <#use-of-ai>`_
+4. `License <#license>`_
+5. `Copyright <#copyright>`_
 
 
 Planning
@@ -29,21 +30,19 @@ Functional Requirements
 -----------------------
 .. image:: /images/toMarkdown.png
    :alt: A model on how the "toMarkdown" command should work.
-The software must convert documents based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regular expressions present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown. Check the `Comparison table <#comparison-table>`_ section for further explaining.
+The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regexes present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown. Check the `Comparison table <#comparison-table>`_ section for further explaining.
 
-As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``*.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``*.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``*.dll``, etc.) and others **will not be opened.**
+As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``.dll``, etc.) and others **will not be opened.**
 
-Considering the program is, for a while, for a shell:
-
-* **Linux:** A Terminal should be opened based on the directory (folder) the program is in, using the ``./toMarkdown.py file.txt`` command. Make sure to check if the Python-coded program is able to run with ``ls -l`` and, if not, use the ``chmod u+x ./toMarkdown.py`` to make it executable.
+Considering the program is, for a while, for a shell (MS-DOS, Bash, etc.). A terminal should be opened based on the directory (folder) the program and the input text file is in, using either ``mw2md --toMediawiki file.md`` or ``mw2md -wiki file.md`` commands to convert.
 
 
 Non-functional Requirements
 ---------------------------
 .. image:: /images/toMediawiki.png
    :alt: A model on how the "toMediawiki" command should work.
-Because it is still just a model, the software, for a while, will run in the form of a shell (MS-DOS, Bash, etc.)'s command. I plan in the future to make it either:
- * A software for Windows, macOS and Linux by using Python's user interface libraries like *PySimpleGUI* or *tkInter*;
+Because it is still just a model, for a while, it will run in the form of a shell command. I plan in the future to make it either:
+ * A software for Windows, Linux and, if possible, macOS by using Python's user interface libraries like *PySimpleGUI* or *tkInter*;
  * An application for Android and iOS;
  * A website by using HTML, JavaScript and Cascading Style Sheets.
 
@@ -251,7 +250,30 @@ Comparison table
    * - ``[GitHub](http://github.com)``
      - External link
      - ``[http://github.com GitHub]``
+   * - ``![](/image.png)``
+     - Image (no alt-text)
+     - ``[[File:image.png]]``
+   * - ``![Text](/image.png)``
+     - Image (with alt-text)
+     - ``[[File:image.png|Text]]``
      
+Use of AI
+=========
+  *"Question. Are the .py programs AI-generated? Did you tell to ChatGPT to generate them and you just copypasted (plagiarized) the final source-code?"*
+Well... yes and no. Before overreacting, please read below.
+
+No because, if you observe the source-codes of the .py programs and the way the .rst dosc are written, you may notice a lot of aspects that shows amateurism, something that AI wouldn't do. If you tell to a chatbot to generate a Python program that does this, it will obviously look way superior.
+
+And yes because I didn't know to use the "re" library. I tried to develop the software by using Python's proper operations for strings, like ``.replace()``, ``.join()``, ``.strip()``, etc. But they would make the source-code look huge, and several regexes (eg.: ``[Sample Text](http://website.io)`` for external links in Markdown) are impossible to handle using the ``.replace()``. So I had to rely on a chatbot to learn how to use the "re". I chose DeepSeek.
+
+.. image:: /images/deepseek.svg
+   :alt: DeepSeek's logo
+
+Yes, that **Chinese** chatbot that shaked the market, going as far as making NVIDIA `lose more than half a trillion USD in market value <https://www.forbes.com/sites/dereksaul/2025/01/27/biggest-market-loss-in-history-nvidia-stock-sheds-nearly-600-billion-as-deepseek-shakes-ai-darling/>`_.
+
+My decision to use DeepSeek is because, I dunno, I found it superior compared to ChatGPT, Google's Gemini and Copilot. The former's results from the written prompts say closer to what I think than the latter three.
+
+
 License
 =======
 .. image:: /images/gplv3.svg
