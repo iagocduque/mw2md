@@ -260,9 +260,9 @@ Comparison table
 Use of AI
 =========
   *"Question. Are the .py programs AI-generated? Did you tell to ChatGPT to generate them and you just copypasted (plagiarized) the final source-code?"*
-Well... yes and no. Before overreacting, please read below.
+Well... yes and no. Please read before overreacting.
 
-No because, if you observe the source-codes of the .py programs and the way the .rst dosc are written, you may notice a lot of aspects that shows amateurism, something that AI wouldn't do. If you tell to a chatbot to generate a Python program that does this, it will obviously look way superior.
+No because, if you observe the source-codes of the .py programs and the way the .rst docs are written, you may notice a lot of aspects that shows amateurism, something that AI wouldn't do. If you tell to a chatbot to generate a Python program that does this, it will obviously look way superior.
 
 And yes because I didn't know to use the "re" library. I tried to develop the software by using Python's proper operations for strings, like ``.replace()``, ``.join()``, ``.strip()``, etc. But they would make the source-code look huge, and several regexes (eg.: ``[Sample Text](http://website.io)`` for external links in Markdown) are impossible to handle using the ``.replace()``. So I had to rely on a chatbot to learn how to use the "re". I chose DeepSeek.
 
