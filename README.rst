@@ -30,11 +30,13 @@ Functional Requirements
 -----------------------
 .. image:: /images/toMarkdown.png
    :alt: A model on how the "toMarkdown" command should work.
-The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regexes present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown. Check the `Comparison table <#comparison-table>`_ section for further explaining.
+The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regexes present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown. The `Comparison table <#comparison-table>`_ is to have an idea how the strings are marked.
 
 As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``.dll``, etc.) and others **will not be opened.**
 
 Considering the program is, for a while, for a shell (MS-DOS, Bash, etc.). A terminal should be opened based on the directory (folder) the program and the input text file is in, using either ``mw2md --toMediawiki file.md`` or ``mw2md -wiki file.md`` commands to convert.
+
+Check the comments inside the ".py" files' source-codes (not yet compiled) for further info.
 
 
 Non-functional Requirements
@@ -135,7 +137,7 @@ Here is my "wikiography" (pages I have created or updated), the best I can remem
      - Created
      - *GRAND-DUCHY*
      - Miraheze
-   * - Windows Flash parodies (not found in archive.org)
+   * - `Windows' Flash parodies <https://web.archive.org/web/20221127022502/https://crappygames.miraheze.org/wiki/Windows'_Flash_parodies>`_
      - Crappy Games Wiki (deleted wiki)
      - Created
      - *GRAND-DUCHY*
