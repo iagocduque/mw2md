@@ -16,7 +16,6 @@ Content
 
  * `MediaWiki <#mediawiki>`_
  * `Markdown <#markdown>`_
- * `Comparison table <#comparison-table>`_
 
 3. `Use of AI <#use-of-ai>`_
 4. `License <#license>`_
@@ -30,7 +29,62 @@ Functional Requirements
 -----------------------
 .. image:: /images/toMarkdown.png
    :alt: A model on how the "toMarkdown" command should work.
-The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regexes present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown. The `Comparison table <#comparison-table>`_ is to have an idea how the strings are marked.
+The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regexes present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown.
+
+The comparison table below is to have an idea how the strings are marked:
+
+.. list-table::
+   :header-rows: 1
+   :widths: auto
+
+   * - Markdown
+     - Meaning
+     - Mediawiki
+   * - ``#``
+     - Heading h1
+     - ``= =``
+   * - ``##``
+     - Heading h2
+     - ``== ==``
+   * - ``###``
+     - Heading h3
+     - ``=== ===``
+   * - ``####``
+     - Heading h4
+     - ``==== ====``
+   * - ``#####``
+     - Heading h5
+     - ``===== =====``
+   * - ``######``
+     - Heading h6
+     - ``====== ======``
+   * - ``__ __``
+     - Bold
+     - ``''' '''``
+   * - ``_ _``
+     - Italic
+     - ``'' ''``
+   * - ``~ ~``
+     - Strikethrough
+     - ``<s> </s>``
+   * - ``<u> </u>``
+     - Underlining
+     - ``<u> </u>``
+   * - ``` ```
+     - In-line code
+     - ``<code> </code>``
+   * - ``````` ```````
+     - Blockcode
+     - ``<pre> </pre>``
+   * - ``[GitHub](http://github.com)``
+     - External link
+     - ``[http://github.com GitHub]``
+   * - ``![](/image.png)``
+     - Image (no alt-text)
+     - ``[[File:image.png]]``
+   * - ``![Text](/image.png)``
+     - Image (with alt-text)
+     - ``[[File:image.png|Text]]``
 
 As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``.dll``, etc.) and others **will not be opened.**
 
@@ -203,61 +257,6 @@ I suddenly knew about this wiki when I was off the internet (due to pressures of
      - Created
      - *iagocduque*
      - GitLab
-
-Comparison table
-----------------
-.. list-table::
-   :header-rows: 1
-   :widths: auto
-
-   * - Markdown
-     - Meaning
-     - Mediawiki
-   * - ``#``
-     - Heading h1
-     - ``= =``
-   * - ``##``
-     - Heading h2
-     - ``== ==``
-   * - ``###``
-     - Heading h3
-     - ``=== ===``
-   * - ``####``
-     - Heading h4
-     - ``==== ====``
-   * - ``#####``
-     - Heading h5
-     - ``===== =====``
-   * - ``######``
-     - Heading h6
-     - ``====== ======``
-   * - ``__ __``
-     - Bold
-     - ``''' '''``
-   * - ``_ _``
-     - Italic
-     - ``'' ''``
-   * - ``~ ~``
-     - Strikethrough
-     - ``<s> </s>``
-   * - ``<u> </u>``
-     - Underlining
-     - ``<u> </u>``
-   * - ``` ```
-     - In-line code
-     - ``<code> </code>``
-   * - ``````` ```````
-     - Blockcode
-     - ``<pre> </pre>``
-   * - ``[GitHub](http://github.com)``
-     - External link
-     - ``[http://github.com GitHub]``
-   * - ``![](/image.png)``
-     - Image (no alt-text)
-     - ``[[File:image.png]]``
-   * - ``![Text](/image.png)``
-     - Image (with alt-text)
-     - ``[[File:image.png|Text]]``
      
 Use of AI
 =========
