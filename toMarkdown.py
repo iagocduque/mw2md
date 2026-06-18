@@ -21,6 +21,18 @@ except: # ← If the file either does not exist, it's not text type or anything 
 
 # ↓ NOTE: Since Python reads from left to right and from up to down, to avoid incorrect rendering, the ccodes will run from the highest to the lowest of characters' amount. "Bolditalic" first, italic last. Heading h6 first, heading h1 last.
 
+# ↓ Enumerate lists
+def enum_replace(txt):
+ counter=1
+ def repl(match):
+  nonlocal counter
+  result=f"{counter}. {match.group(1)}"
+  counter+=1
+  return result
+ return re.sub(r'# (.+?)$',repl,txt,flags=re.MULTILINE)
+if "# " in text: # ←  Will only be done if the specified string exists in text
+ text=enum_replace(text)
+
 # ↓ Heading h6 formatting
 if "======" in text:
  text=re.sub(r"====== (.+?)======",r"###### \1",text)
@@ -44,15 +56,15 @@ if "===" in text:
 # ↓ Heading h2 formatting
 if "==" in text:
  text=re.sub(r"== (.+?)==",r"## \1",text)
- text=re.sub(r"==(.+?)==",r"\1\n---",text)
+ text=re.sub(r"==(.+?)==",r"\1\n-------",text)
 
 # ↓ Heading h1 formatting
 if "=" in text:
  text=re.sub(r"= (.+?)=",r"# \1",text)
- text=re.sub(r"=(.+?)=",r"\1\n===",text)
+ text=re.sub(r"=(.+?)=",r"\1\n=======",text)
  
 # ↓ Bold and italic formatting
-if "'''''" in text: # ←  Will only be done if the specified string exists in text
+if "'''''" in text:
  text=re.sub(r"'''''(.+?)'''''",r"___\1___",text)
 
 # ↓ Bold formatting
@@ -62,6 +74,10 @@ if "'''" in text:
 # ↓ Italic formatting
 if "''" in text:
  text=re.sub(r"''(.+?)''",r"_\1_",text)
+
+# ↓ Bulleted subitems
+if "** " in text:
+ text=re.sub(r"\*\* (.+?)\n",r"  * \1\n",text)
 
 # ↓ Striked through text
 if "<s>" in text and "</s>" in text:
