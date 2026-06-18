@@ -1,7 +1,7 @@
 > This file will be translated from MARKDOWN to MEDIAWIKI.
 
-![Markdown](/markdown.svg)
-![](/mediawiki.svg)
+![Markdown](/images/markdown.svg)
+![](/images/mediawiki.svg)
 # Header h1
 ## Header h2
 ### Header h3
@@ -23,5 +23,18 @@ _Italic 1_ and *Italic 2*
 ```
 Blockcodes
 ```
+1. First
+ 1. Sub-first
+10. Tenth
 
-__Streaming majors:__ [Netflix](http://netflix.com/) by Netflix, [YouTube](http://youtube.com/) by Google, [Prime Video](http://primevideo.com/) by Amazon, [Apple TV](http://tv.apple.com/) by Apple, [Disney+](http://disneyplus.com/) by Disney, [HBO Max](http://hbomax.com/) by Warner Bros., [Paramount+](http://paramountplus.com/) by Paramount and [Crunchyroll](http://crunchyroll.com/) by Sony Pictures.
+__Streaming majors:__
+* [Netflix](http://netflix.com/) by Netflix;
+* [YouTube](http://youtube.com/) by Google;
+* [Prime Video](http://primevideo.com/) by Amazon;
+* [Apple TV](http://tv.apple.com/) by Apple;
+* [Disney+](http://disneyplus.com/) by Disney;
+* [Paramount+](http://paramountplus.com/) by Paramount;
+  * [HBO Max](http://hbomax.com/) by Warner Bros.;
+* [Crunchyroll](http://crunchyroll.com/) by Sony Pictures;
+* [Peacock](http://peacock.com/) by Comcast.
+
