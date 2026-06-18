@@ -23,29 +23,48 @@ except: # ← If the file either does not exist, it's not text type or anything 
 
 # ↓ Heading h6 formatting
 if "######" in text: # ←  Will only be done if the specified string exists in text
- text=re.sub(r"###### ([^.$]+?)\n",r"====== \1 ======\n",text)
+ text=re.sub(r"###### (.+?)\n",r"====== \1 ======\n",text)
  
 # ↓ Heading h5 formatting
 if "#####" in text:
- text=re.sub(r"##### ([^.$]+?)\n",r"===== \1 =====\n",text)
+ text=re.sub(r"##### (.+?)\n",r"===== \1 =====\n",text)
  
 # ↓ Heading h4 formatting
 if "####" in text:
- text=re.sub(r"#### ([^.$]+?)\n",r"==== \1 ====\n",text)
+ text=re.sub(r"#### (.+?)\n",r"==== \1 ====\n",text)
 
 # ↓ Heading h3 formatting
 if "###" in text:
- text=re.sub(r"### ([^.$]+?)\n",r"=== \1 ===\n",text)
+ text=re.sub(r"### (.+?)\n",r"=== \1 ===\n",text)
 
+# ↓ NOTE: For a while, only the normal h1 and h2 heading formats will be handled. The alternate formats ("Text\n====","Text\n----") will be handled later.
 # ↓ Heading h2 formatting
-# ↓ NOTE: For a while, only the usual "## " formatting will be used. The " \n-" alternative will be handled later. Same for the heading h1, that uses " \n=" as an alternative.
 if "##" in text:
- text=re.sub(r"## ([^.$]+?)\n",r"== \1 ==\n",text)
+ text=re.sub(r"## (.+?)\n",r"== \1 ==\n",text)
 
 # ↓ Heading h1 formatting
 if "#" in text:
- text=re.sub(r"# ([^.$]+?)\n",r"= \1 =\n",text)
+ text=re.sub(r"# (.+?)\n",r"= \1 =\n",text)
+
+# ↓ Enumerate lists
+def enum_replace(txt):
+ pattern=r"^(\d+)\.\s+"
+ lines=txt.split('\n')
+ newlines=[]
+ for line in lines:
+  match=re.match(pattern,line)
+  if match:
+   newline=re.sub(pattern,"# ",line)
+   newlines.append(newline)
+  else:
+   newlines.append(line)
+ return "\n".join(newlines)
+if ". " in text:
+ text=enum_replace(text)
  
+if "  * " in text:
+ text=re.sub(r"  \* (.+?)\n",r"** \1\n",text)
+
 # ↓ Bold and italic formatting
 if "___" in text:
  text=re.sub(r"___([^.$]+?)___",r"'''''\1'''''",text)
