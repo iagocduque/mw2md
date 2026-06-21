@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# ^ This element will allow the ./toMediawiki.py program run directly on the Terminal, without needing the preceding "python3".
+# ^ This element will allow the ./-wiki.py program run directly on the Terminal, without needing the preceding "python3".
 import sys
 # ^ Importing this library is necessary to use and open a wanted file to convert. By using only the filename, the same should be on the same folder the program is. If it is in another folder, the absolute directory (path) should be specified.
 import re
-# ^ This will replace patterns and regular expressions if they match. The following command will be used: re.sub(r"([^.$]+?)",r"\1",text).
+# ^ This will replace patterns and regular expressions if they match. The following command will be used: re.sub(r"(.+?)",r"\1",text).
 
 
 if len(sys.argv)!=2: # ← Two items: Program's name and filename
@@ -19,10 +19,24 @@ except: # ← If the file either does not exist, it's not text type or anything 
  exit()
 
 
+# ↓ Alternate h1 and h2 formattings
 # ↓ NOTE: Since Python reads from left to right and from up to down, to avoid incorrect rendering, the codes will run from the highest to the lowest of characters' amount. "Bolditalic" first, italic last. Heading h6 first, heading h1 last.
+def h1h2towiki(txt):
+ pattern=re.compile(r"^(.*?)\s*\n(=+|-+)\s*$",re.MULTILINE)
+ def repl(match):
+  header=match.group(1).strip()
+  chars=match.group(2)
+  if all(c=="=" for c in chars):
+   lv=1
+  else:
+   lv=2
+  return f"{'='*(lv)}{header}{'='*(lv)}"
+ return pattern.sub(repl,txt)
+if "\n====" in text or "\n----" in text:
+ text=h1h2towiki(text)
 
 # ↓ Heading h6 formatting
-if "######" in text: # ←  Will only be done if the specified string exists in text
+if "######" in text:
  text=re.sub(r"###### (.+?)\n",r"====== \1 ======\n",text)
  
 # ↓ Heading h5 formatting
@@ -37,7 +51,6 @@ if "####" in text:
 if "###" in text:
  text=re.sub(r"### (.+?)\n",r"=== \1 ===\n",text)
 
-# ↓ NOTE: For a while, only the normal h1 and h2 heading formats will be handled. The alternate formats ("Text\n====","Text\n----") will be handled later.
 # ↓ Heading h2 formatting
 if "##" in text:
  text=re.sub(r"## (.+?)\n",r"== \1 ==\n",text)
@@ -46,77 +59,73 @@ if "##" in text:
 if "#" in text:
  text=re.sub(r"# (.+?)\n",r"= \1 =\n",text)
 
-# ↓ Enumerate lists
-def enum_replace(txt):
- pattern=r"^(\d+)\.\s+"
- lines=txt.split('\n')
- newlines=[]
- for line in lines:
-  match=re.match(pattern,line)
-  if match:
-   newline=re.sub(pattern,"# ",line)
-   newlines.append(newline)
-  else:
-   newlines.append(line)
- return "\n".join(newlines)
+# ↓ Enumerate sub-items
+# ↓ NOTE: Numbers/digits from 0 to 9 are grabbed using re's "(\d+)".
 if ". " in text:
- text=enum_replace(text)
+ text=re.sub(r"\n   (\d+). (.+?)",r"\n## \2",text)
+
+# ↓ Enumerate lists
+if ". " in text:
+ text=re.sub(r"\n(\d+). (.+?)",r"\n# \2",text)
  
+# ↓ Bulleted sub-items
+# ↓ NOTE: The way the re library works, the "*" in the pattern to be grabbed must be written as "\*" to avoid confusions. Putting simply an "*" will throw an exception.
 if "  * " in text:
  text=re.sub(r"  \* (.+?)\n",r"** \1\n",text)
 
 # ↓ Bold and italic formatting
 if "___" in text:
- text=re.sub(r"___([^.$]+?)___",r"'''''\1'''''",text)
-# ↓ NOTE: The way the re library works, the "*" in the pattern to be grabbed must be written as "\*" to avoid confusions. Putting simply an "*" will throw an exception.
+ text=re.sub(r"___(.+?)___",r"'''''\1'''''",text)
 if "__*" and "*__" in text:
- text=re.sub(r"__\*([^.$]+?)\*__",r"'''''\1'''''",text)
- text=re.sub(r"\*__([^.$]+?)__\*",r"'''''\1'''''",text)
+ text=re.sub(r"__\*(.+?)\*__",r"'''''\1'''''",text)
+ text=re.sub(r"\*__(.+?)__\*",r"'''''\1'''''",text)
 if "_**" and "**_" in text:
- text=re.sub(r"_\*\*([^.$]+?)\*\*_",r"'''''\1'''''",text)
- text=re.sub(r"\*\*_([^.$]+?)_\*\*",r"'''''\1'''''",text)
+ text=re.sub(r"_\*\*(.+?)\*\*_",r"'''''\1'''''",text)
+ text=re.sub(r"\*\*_(.+?)_\*\*",r"'''''\1'''''",text)
 if "***" in text:
- text=re.sub(r"\*\*\*([^.$]+?)\*\*\*",r"'''''\1'''''",text)
+ text=re.sub(r"\*\*\*(.+?)\*\*\*",r"'''''\1'''''",text)
 
 # ↓ Bold formatting
 if "__" in text:
- text=re.sub(r"__([^.$]+?)__",r"'''\1'''",text)
+ text=re.sub(r"__(.+?)__",r"'''\1'''",text)
 if "_*" in text and "*_" in text:
- text=re.sub(r"_\*([^.$]+?)\*_",r"'''\1'''",text)
- text=re.sub(r"\*_([^.$]+?)_\*",r"'''\1'''",text)
+ text=re.sub(r"_\*(.+?)\*_",r"'''\1'''",text)
+ text=re.sub(r"\*_(.+?)_\*",r"'''\1'''",text)
 if "**" in text:
- text=re.sub(r"\*\*([^.$]+?)\*\*",r"'''\1'''",text)
+ text=re.sub(r"\*\*(.+?)\*\*",r"'''\1'''",text)
 
 # ↓ Italic formatting
 if "_" in text:
- text=re.sub(r"_([^.$]+?)_",r"''\1''",text)
+ text=re.sub(r"_(.+?)_",r"''\1''",text)
 if "*" in text:
- text=re.sub(r"\*([^.$]+?)\*",r"''\1''",text)
+ text=re.sub(r"\*(.+?)\*",r"''\1''",text)
+
+# ↓ Quotes field
+if "> " in text:
+ text=re.sub(r"> (.+?)\n\n",r"{{quote|\1}}\n",text)
 
 # ↓ Striked through text
 if "~" in text:
- text=re.sub(r"~([^.$]+?)~",r"<s>\1</s>",text)
+ text=re.sub(r"~(.+?)~",r"<s>\1</s>",text)
 
 # ↓ Blockcode field (copyable on GitHub-flavored formatting)
 if "```" in text:
- text=re.sub(r"```([^.$]+?)```",r"<pre>\1</pre>",text)
-
-# ↓ Quotes field
-if ">" in text:
- text=re.sub(r"> (.+?)\n\n",r"{{quote|\1}}\n",text) # ← Space after the ">"
- text=re.sub(r"> (.+?)\n\n",r"{{quote|\1}}\n",text)
+ text=re.sub(r"```(.+?)```",r"<pre>\1</pre>",text)
 
 # ↓ Inline code field
 if "`" in text:
- text=re.sub(r"<code>([^.$]+?)</code>",r"`\1`",text)
+ text=re.sub(r"<code>(.+?)</code>",r"`\1`",text)
 
 # ↓ Images
-if "![" in text and "](" in text:
+if "![" in text and "](" in text: # ← With an alt text
+ text=re.sub(r'!\[(.*?)\]\(/(.*?) \"(.*?)\"\)', r"[[File:\2|thumb|\3]]",text)
  text=re.sub(r"!\[(.*?)\]\(/(.*?)\)", r"[[File:\2|\1]]",text)
+if "![](" in text: # ← Without alt text
+ text=re.sub(r"!\[\]\(/(.*?)\)", r"[[File:\1]]",text)
 
 # ↓ External link
 if "http" in text:
  text=re.sub(r"\[(.*?)\]\((.*?)\)", r"[\2 \1]",text)
 
 
-print(f"\n{text}")
+print(text)
