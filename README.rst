@@ -24,12 +24,11 @@ Content
 
 Planning
 ========
-
 Functional Requirements
 -----------------------
-.. image:: /images/toMarkdown.png
-   :alt: A model on how the "toMarkdown" command should work.
-The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up regexes present in both markup languages and change them to another one. For example, the ``== Heading h1 ==``, used to mark *h1* headers in MediaWiki, must be changed to ``# Heading h1``, the equivalent of the same to Markdown.
+.. image:: /images/-md.png
+   :alt: Preview of the "-md" command.
+The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up patterns (regular expressions) present in both markup languages and change them to another one. For example, the ``[Sample Text](http://website.io)``, used to mark external links in MediaWiki, must be changed to ``[http://website.io Sample Text]``, the equivalent of the same to Markdown.
 
 The comparison table below is to have an idea how the strings are marked:
 
@@ -76,9 +75,9 @@ The comparison table below is to have an idea how the strings are marked:
    * - ``````` ```````
      - Blockcode
      - ``<pre> </pre>``
-   * - ``[GitHub](http://github.com)``
+   * - ``[Sample Text](http://website.io)``
      - External link
-     - ``[http://github.com GitHub]``
+     - ``[http://website.io Sample Text]``
    * - ``![](/image.png)``
      - Image (no alt-text)
      - ``[[File:image.png]]``
@@ -88,15 +87,15 @@ The comparison table below is to have an idea how the strings are marked:
 
 As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``.dll``, etc.) and others **will not be opened.**
 
-Considering the program is, for a while, for a shell (MS-DOS, Bash, etc.). A terminal should be opened based on the directory (folder) the program and the input text file is in, using either ``mw2md --toMediawiki file.md`` or ``mw2md -wiki file.md`` commands to convert.
+Considering the program is, for a while, for a shell (MS-DOS, Bash, etc.). A terminal should be opened based on the directory (folder) the program and the input text file is in, using the ``mw2md -wiki file.md`` args to convert.
 
 Check the comments inside the ".py" files' source-codes (not yet compiled) for further info.
 
 
 Non-functional Requirements
 ---------------------------
-.. image:: /images/toMediawiki.png
-   :alt: A model on how the "toMediawiki" command should work.
+.. image:: /images/-wiki.png
+   :alt: Preview of the "-wiki" command.
 Because it is still just a model, for a while, it will run in the form of a shell command. I plan in the future to make it either:
  * A software for Windows, Linux and, if possible, macOS by using Python's user interface libraries like *PySimpleGUI* or *tkInter*;
  * An application for Android and iOS;
@@ -105,13 +104,12 @@ Because it is still just a model, for a while, it will run in the form of a shel
  
 Markup languages
 ================
-
 MediaWiki
 ---------
 .. image:: /images/mediawiki.svg
    :alt: MediaWiki's logo
 
-This is the markup language used in multiple Wiki websites like `Wikipedia <http://en.wikipedia.org>`_, `FANDOM <http://fandom.com>`_, `wiki.gg <http://wiki.gg>`_, `Miraheze <http://miraheze.org>`_ and many others. The three latter websites are the main wiki hosters.
+This is the markup language used in multiple Wiki websites like `Wikipedia <http://en.wikipedia.org>`_, `FANDOM <http://fandom.com>`_, `wiki.gg <http://wiki.gg>`_, `Miraheze <http://miraheze.org>`_ and many others. The latter three are the main wiki hosters.
 
 Okay, how can I basically describe the MediaWiki. It was used on various wikis I was a contributor, such as `Qualitipedia <http://newqualitipedia.telepedia.net>`_ (at the time when it was hosted by Miraheze) and `The Dubbing Database <http://dubdb.fandom.com>`_. I don't know why, but I preferred editing on the source-code than the visual editor. All of my contributions on these wikis were sometime before 2023, these dates being before I started my Computer Science B.Sc. college.
 
@@ -237,11 +235,11 @@ Markdown
 .. image:: /images/markdown.svg
    :alt: Markdown's logo
 
-This is the markup language used in GitHub (and other code versioning websites) for documents like README, CONTRIBUTING, LICENSE, etc.
+This is another markup language to create rich text by simply using a Notepad. It is used in GitHub (and other code versioning websites) for documents like README, CONTRIBUTING, LICENSE, CHANGELOG, MISSING, etc.
 
-I liked this markup language. It's easier to write text using Markdown than MediaWiki. In fact, the former can also be used as an alternative for those that didn't like the latter. One individual I used to follow online, in particular, would go as far as `developing an entire "wiki" (website) <https://gitlab.com/supremesonicbrazil/ytpbr-wiki>`_ using various document types and programming languages, including Markdown for page editing. All that because `he didn't like MediaWiki <https://youtu.be/BomasKTDs0M?t=430>`_.
+I like this markup language. It's easier to write text using Markdown than MediaWiki. In fact, the former can also be used as an alternative for those that didn't like the latter. One individual I used to follow online, in particular, would go as far as `developing an entire "wiki" (website) <https://gitlab.com/supremesonicbrazil/ytpbr-wiki>`_ using various document types and programming languages, including Markdown for page editing. All that because `he didn't like MediaWiki <https://youtu.be/BomasKTDs0M?t=430>`_.
 
-I suddenly knew about this wiki when I was off the internet (due to pressures of my college, and life in general). For those asking, yes, I used to make *YouTube Poops*. So I created a page about myself there. For further information, you may want to have a look at the page I wrote below (NOTE: Because it uses *Google Translate*, the page has **LOTS** of gibberish and inconsistensies):
+I suddenly knew about this wiki when I was off the internet (due to pressures of my college, and life in general). For those asking, yes, I used to make *YouTube Poops*. So I created a page about myself there. For further information, you may want to have a look at the page I wrote below (NOTE: Because it uses *Google Translate*, the page has **LOTS** of gibberish and inconsistencies):
 
 .. list-table::
    :header-rows: 1
@@ -260,19 +258,19 @@ I suddenly knew about this wiki when I was off the internet (due to pressures of
      
 Use of AI
 =========
-  *"Question. Are the .py programs AI-generated? Did you tell to ChatGPT to generate them and you just copypasted (plagiarized) the final source-code?"*
+  *"Question. Are the .py programs AI-generated? Did you tell to ChatGPT to generate them and you just copy-pasted (plagiarized) the final source-code?"*
 Well... yes and no. Please read before overreacting.
 
-No because, if you observe the source-codes of the .py programs and the way the .rst docs are written, you may notice a lot of aspects that shows amateurism, something that AI wouldn't do. If you tell to a chatbot to generate a Python program that does this, it will obviously look way superior.
+No because, if you observe the source-codes of the .py programs, you may notice a lot of aspects that shows amateurism, something that AI wouldn't do. If you tell to a chatbot to generate a Python program that does this, it will obviously look way superior.
 
-And yes because I didn't know to use the "re" library. I tried to develop the software by using Python's proper operations for strings, like ``.replace()``, ``.join()``, ``.strip()``, etc. But they would make the source-code look huge, and several regexes (eg.: ``[Sample Text](http://website.io)`` for external links in Markdown) are impossible to handle using the ``.replace()``. So I had to rely on a chatbot to learn how to use the "re". I chose DeepSeek.
+And yes because I didn't know to use the "re" library. I tried to develop the software by using Python's proper operations for strings, like ``.replace()``, ``.join()``, ``.strip()``, etc. But they would make the source-code look huge, and several patterns (eg.: ``[Sample Text](http://website.io)`` for external links in Markdown) are impossible to handle using the ``.replace()`` operation. It would be possible with the ``[Sample Text](http://website.io)`` isolated string in a variable, changed to ``[http://website.io Sample Text]``, but it is just a string in a huge text stored.
 
 .. image:: /images/deepseek.svg
    :alt: DeepSeek's logo
 
-Yes, that **Chinese** chatbot that shaked the market, going as far as making NVIDIA `lose more than half a trillion USD in market value <https://www.forbes.com/sites/dereksaul/2025/01/27/biggest-market-loss-in-history-nvidia-stock-sheds-nearly-600-billion-as-deepseek-shakes-ai-darling/>`_.
+So I had to rely on a chatbot to learn how to use the "re". I picked up DeepSeek. Yes, **that** Chinese chatbot that shaked the market, going as far as making NVIDIA `lose more than half a trillion USD in market value <https://www.forbes.com/sites/dereksaul/2025/01/27/biggest-market-loss-in-history-nvidia-stock-sheds-nearly-600-billion-as-deepseek-shakes-ai-darling/>`_.
 
-My decision to use DeepSeek is because, I dunno, I found it superior compared to ChatGPT, Google's Gemini and Copilot. The former's results from the written prompts say closer to what I think than the latter three.
+My decision to use DeepSeek is because, I dunno, I found it superior compared to ChatGPT, Google's Gemini, Copilot or Claude. The former's results from the written prompts say closer to what I think than the latter three.
 
 
 License
@@ -281,9 +279,11 @@ License
    :alt: GNU General Public License v3.0's logo
 This software is open-source by using Free Software Foundation's *GNU General Public License*, particularly the version 3.0.
 
-This means you can reverse-engineer this software for studying purposes, modify or custom based on your own taste or improve the source-code (fixing bugs and glitches) and sending pull requests for me to put all improvements on the official one. The latter of the three said things is a similar procedure used by *Early Access* videogames on Steam, where the developers uses gamers to debug and polish the game.
+This means you can reverse-engineer this software for studying purposes, modify or custom based on your own taste or improve the source-code (fixing bugs and glitches) and sending pull requests for me to put all improvements on the official one.
 
-Every fork of this repository on GitHub should also be of the GPL-v3 license, being this one of the limitations of the. It is deliberately the same license used by the Linux kernel; only this suggests that every Linux distro known to man also uses the GPL license.
+That being said, a limitation provided by the chosen license. Every fork of this repository on GitHub should also be "GPL-v3" license, being this one of the limitations of the said license. Deliberately the same one used by the Linux kernel; only this suggesting that every Linux distro known to man also uses the GPL license. And, unlike other licenses like *MIT*, this project cannot be forked for profit.
+
+You may want to read the GPL-v3 under the License tab of this repo.
 
 Copyright
 =========
