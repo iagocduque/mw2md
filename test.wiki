@@ -1,7 +1,8 @@
 <blockquote>This file will be translated from MEDIAWIKI to MARKDOWN.</blockquote>
 {{quote|This file will be translated from MEDIAWIKI to MARKDOWN.}}
-[[File:images/markdown.svg|Markdown]]
-[[File:images/mediawiki.svg]]
+[[File:markdown.svg|thumb|Markdown's logo]]
+[[File:markdown.svg|Markdown's logo]]
+[[File:markdown.svg]]
 = Header h1a =
 =Header h1b=
 == Header h2a ==
@@ -20,24 +21,31 @@
 Blockcodes
 </pre>
 # First
+## Sub-first
+## Sub-second
+## Sub-third
 # Second
 # Third
 # Fourth
-↓ THE ENUMLIST BELOW IS RENDERED INCORRECTLY ↓
-# First 2
-## Sub-first 2
-# Second 2
-## Sub-second 2
-# Third 2
-# Fourth 2
+# Fifth
+# Sixth
+## Sub-fourth
+## Sub-fifth
+## Sub-sixth
+# Seventh
+# Eighth
+# Ninth
+# Tenth
+# Eleventh
 
-'''Streaming majors:'''
-* [http://netflix.com/ Netflix] by Netflix;
-* [http://youtube.com/ YouTube] by Google;
-* [http://primevideo.com/ Prime Video] by Amazon;
-* [http://tv.apple.com/ Apple TV] by Apple;
-* [http://disneyplus.com/ Disney+] by Disney;
-* [http://paramountplus.com/ Paramount+] by Paramount;
-** [http://hbomax.com/ HBO Max] by Warner Bros.;
-* [http://crunchyroll.com/ Crunchyroll] by Sony Pictures;
-* [http://peacock.com/ Peacock] by Comcast.
+'''Videogame stores:'''
+* [http://apps.apple.com/ App Store] by Apple;
+* [http://play.google.com/ Play Store] by Google;
+* [http://xbox.com/ Xbox.com] by Microsoft;
+** [http://battle.net/ Battle.net] by Activision Blizzard;
+* [http://store.playstation.com/ PlayStation Store] by Sony;
+* [http://nintendo.com/store/games/ Nintendo eShop] by Nintendo;
+* [http://s.team/ Steam] by Valve;
+* [http://gog.com/ GOG.com] by CD Projekt RED;
+* [http://store.epicgames.com/ Epic Store] by Epic Games;
+* [http://itch.io/ itch.io] by itch.io;
