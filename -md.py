@@ -93,15 +93,21 @@ if "** " in text:
  text=re.sub(r"\n\*\* (.+?)",r"\n   * \1",text)
 
 # ↓ Striked through text
-if "<s>" in text and "</s>" in text:
+if "</s>" in text:
  text=re.sub(r"<s>(.+?)</s>",r"~\1~",text)
 
-# ↓ Blockcode field (copyable on GitHub-flavored formatting)
-if "<pre>" in text and "</pre>" in text:
- text=re.sub(r"<pre>(.+?)</pre>",r"```\1```",text)
+# ↓ Blockcode field with syntax highlight
+if "<syntaxhighlight lang" in text:
+ text=re.sub(r'<syntaxhighlight lang="(.+?)">\n([^.$]+?)\n</syntaxhighlight>',r"```\1\n\2\n```",text,flags=re.MULTILINE)
+
+# ↓ Normal blockcode field
+if "</syntaxhighlight>" in text:
+ text=re.sub(r"<syntaxhighlight>\n([^.$]+?)\n</syntaxhighlight>",r"```\n\1\n```",text,flags=re.MULTILINE)
+if "</pre>" in text:
+ text=re.sub(r"<pre>\n([^.$]+?)\n</pre>",r"```\n\1\n```",text,flags=re.MULTILINE)
 
 # ↓ Inline code field
-if "<code>" in text and "</code>" in text:
+if "</code>" in text:
  text=re.sub(r"<code>(.+?)</code>",r"`\1`",text)
  
 # ↓ Quotes field
