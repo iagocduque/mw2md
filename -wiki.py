@@ -108,13 +108,17 @@ if "> " in text:
 if "~" in text:
  text=re.sub(r"~(.+?)~",r"<s>\1</s>",text)
 
-# ↓ Blockcode field (copyable on GitHub-flavored formatting)
+# ↓ Blockcode field with syntax highlight
 if "```" in text:
- text=re.sub(r"```(.+?)```",r"<pre>\1</pre>",text)
+ text=re.sub(r"```(.+?)\n([^.$]+?)\n```",r'<syntaxhighlight lang="\1">\n\2\n</syntaxhighlight>',text,flags=re.MULTILINE)
+
+# ↓ Normal blockcode field
+if "```" in text:
+ text=re.sub(r"```\n([^.$]+?)\n```",r"<pre>\n\1\n</pre>",text,flags=re.MULTILINE)
 
 # ↓ Inline code field
 if "`" in text:
- text=re.sub(r"<code>(.+?)</code>",r"`\1`",text)
+ text=re.sub(r"`(.+?)`",r"<code>\1</code>",text)
 
 # ↓ Images
 if "![" in text and "](" in text: # ← With an alt text
