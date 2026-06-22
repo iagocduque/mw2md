@@ -19,14 +19,17 @@ __Bold 1__ and _*Bold 2*_
 
 _Italic 1_ and *Italic 2*
 
-<u>Underlined</u>
-
 ~Strikethrough~
 
 `Code`
 
 ```
 Blockcodes
+```
+
+```py
+if True:
+ print("Blockcodes")
 ```
 1. First
    1. Sub-first
