@@ -19,4 +19,5 @@ But there is a problem: bash's ">" replaces the output file if it already exists
 Other
 -----
 * Tables and sheets;
-* More detailing of media (images, audios, videos, etc.)
+* More detailing of media (images, audios, videos, etc.);
+* re.sub **not** grabbing inside blockcodes (avoid ``def __init__`` becoming ``def '''init'''``).
