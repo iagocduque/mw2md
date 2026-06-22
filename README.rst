@@ -293,13 +293,11 @@ You may want to read the GPL-v3 under the License tab of this repo.
 
 Contributing
 ============
-As stated on the README tab, this software is incomplete. There are lots of markup fields to be covered.
+As stated, this software is incomplete. There are lots of markup fields to be covered.
 
 If you would like to contribute to this project, you should fork this repository and make your own improvements to the source-codes. If the improvements are good enough, they shall be eligible for a pull request and the changes will be put in the official "root" repository. Similar procedure used by *Early Access* videogames on Steam, where the developers uses gamers to debug and polish the game.
 
-Or, if you'd like, download one of the ".py" files (either *toMarkdown* or *toMediawiki*) and test them in a random text file. The ".py" files should be executed in your operating system's shell.
-
-**NOTE: I had to merge the CONTRIBUTING.rst content to this README.rst file, because GitHub's Android/iOS app has no "Contributing" tab to be viewed. And .rst files are not rendered to rich text, unlike .md files when viewed inside the repo.**
+Or, if you'd like, download one of the ".py" files (either *-md* or *-wiki*) and test them in a random text file. The ".py" files should be executed in your operating system's shell.
 
 
 Exporting
