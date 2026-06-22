@@ -14,12 +14,15 @@
 '''''Boltalic'''''
 '''Bold'''
 ''Italic''
-<u>Underlined</u>
 <s>Strikethrough</s>
 <code>Code</code>
 <pre>
 Blockcodes
 </pre>
+<syntaxhighlight lang="py">
+if True:
+ print("Blockcodes")
+</syntaxhighlight>
 # First
 ## Sub-first
 ## Sub-second
