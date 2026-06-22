@@ -19,7 +19,12 @@ Content
 
 3. `Use of AI <#use-of-ai>`_
 4. `License <#license>`_
-5. `Copyright <#copyright>`_
+5. `Contributing <#contributing>`_
+
+ * `Exporting <#exporting>`_
+ * `Other <#other>`_
+
+6. `Copyright <#copyright>`_
 
 
 Planning
@@ -284,6 +289,33 @@ This means you can reverse-engineer this software for studying purposes, modify 
 That being said, a limitation provided by the chosen license. Every fork of this repository on GitHub should also be "GPL-v3" license, being this one of the limitations of the said license. Deliberately the same one used by the Linux kernel; only this suggesting that every Linux distro known to man also uses the GPL license. And, unlike other licenses like *MIT*, this project cannot be forked for profit.
 
 You may want to read the GPL-v3 under the License tab of this repo.
+
+
+Contributing
+============
+As stated on the README tab, this software is incomplete. There are lots of markup fields to be covered.
+
+If you would like to contribute to this project, you should fork this repository and make your own improvements to the source-codes. If the improvements are good enough, they shall be eligible for a pull request and the changes will be put in the official "root" repository. Similar procedure used by *Early Access* videogames on Steam, where the developers uses gamers to debug and polish the game.
+
+Or, if you'd like, download one of the ".py" files (either *toMarkdown* or *toMediawiki*) and test them in a random text file. The ".py" files should be executed in your operating system's shell.
+
+**NOTE: I had to merge the CONTRIBUTING.rst content to this README.rst file, because GitHub's Android/iOS app has no "Contributing" tab to be viewed. And .rst files are not rendered to rich text, unlike .md files when viewed inside the repo.**
+
+
+Exporting
+---------
+.. image:: /images/exporting.png
+   :alt: Procedure of the ">" command in Bash.
+There should be a command inside the .py source codes that exports the output. A command in bash (Linux Terminal) exists that exports the arguments outputs to another file: ``commands > output.txt``. The ">" writes the outputs inside the file. The equivalent for *Windows PowerShell* (same for cmd and MS-DOS) is unknown.
+
+But there is a problem: bash's ">" replaces the output file if it already exists. There should be an exception inside the ".py" source-code that throws/raises an error if the output file already exists.
+
+Other
+-----
+* Tables and sheets;
+* More detailing of media (images, audios, videos, etc.);
+* re.sub **not** grabbing inside blockcodes (avoid ``def __init__`` becoming ``def '''init'''``).
+
 
 Copyright
 =========
