@@ -22,6 +22,7 @@ Content
 5. `Contributing <#contributing>`_
 
  * `To-do <#to-do>`_
+ * `Impossible <#impossible>`_
 
 6. `Copyright <#copyright>`_
 
@@ -30,8 +31,50 @@ Planning
 ========
 Functional Requirements
 -----------------------
-.. image:: /images/-md.png
-   :alt: Preview of the "-md" command.
+.. code-block :: mediawiki
+
+  <blockquote>This file will be translated from MEDIAWIKI to MARKDOWN.</blockquote>
+  {{quote|This file will be translated from MEDIAWIKI to MARKDOWN.}}
+  [[File:image.png|thumb|Sample image.]]
+  [[File:image.png|Sample image.]]
+  [[File:image.png]]
+  = Heading h1a =
+  =Heading h1b=
+  == Heading h2a ==
+  ==Heading h2b==
+  === Heading h3 ===
+  ==== Heading h4 ====
+  ===== Heading h5 =====
+  ====== Heading h6 ======
+  '''''Boltalic'''''
+  '''Bold'''
+  ''Italic''
+  ...
+.. code-block :: bash
+
+  user@user-PC-name:~$ ./-md.py test.wiki
+  > This file will be translated from MEDIAWIKI to MARKDOWN.
+  
+  > This file will be translated from MEDIAWIKI to MARKDOWN.
+  
+  ![](/image.png "Sample image.")
+  ![Sample image.](/image.png)
+  ![](/image.png)
+  # Heading h1a
+  Heading h1b
+  ===========
+  ## Heading h2a
+  Heading h2b
+  -----------
+  ### Heading h3
+  #### Heading h4
+  ##### Heading h5
+  ###### Heading h6
+  ___Boltalic___
+  __Bold__
+  _Italic_
+  ...
+
 The docs should be converted based on their source-code. A text in MediaWiki must be converted to Markdown and vice-versa. The way it converts will pick up patterns (regular expressions) present in both markup languages and change them to another one. For example, the ``[Sample Text](http://website.io)``, used to mark external links in MediaWiki, must be changed to ``[http://website.io Sample Text]``, the equivalent of the same to Markdown.
 
 The comparison table below is to have an idea how the strings are marked:
@@ -44,10 +87,16 @@ The comparison table below is to have an idea how the strings are marked:
      - Meaning
      - Mediawiki
    * - ``#``
-     - Heading h1
+     - Heading h1 (common)
+     - ``= =``
+   * - ``====`` (under text)
+     - Heading h1 (alternate)
      - ``= =``
    * - ``##``
-     - Heading h2
+     - Heading h2 (common)
+     - ``== ==``
+   * - ``----``  (under text)
+     - Heading h2 (alternate)
      - ``== ==``
    * - ``###``
      - Heading h3
@@ -88,6 +137,9 @@ The comparison table below is to have an idea how the strings are marked:
    * - ``![Text](/image.png)``
      - Image (with alt-text)
      - ``[[File:image.png|Text]]``
+   * - ``![](/image.png "Text")`` (cursor hover)
+     - Image (thunbnail)
+     - ``[[File:image.png|thumb|Text]]`` (below image)
 
 As an exception treated, the software will only open and read text-based files. Images, videos, audios, compiled programs (``.exe``, ``.msi``, ``.AppImage``, ``.x86_64``, etc.), compressed files (``.rar``, ``.zip``, ``.7z``, ``.apk``, ``.tar.gz``, ``.deb``, ``.rpm``, etc.), program parts (``.dll``, etc.) and others **will not be opened.**
 
@@ -98,8 +150,46 @@ Check the comments inside the ".py" files' source-codes (not yet compiled) for f
 
 Non-functional Requirements
 ---------------------------
-.. image:: /images/-wiki.png
-   :alt: Preview of the "-wiki" command.
+.. code-block :: markdown
+
+  > This file will be translated from MEDIAWIKI to MARKDOWN.
+  
+  ![](/image.png "Sample image.")
+  ![Sample image.](/image.png)
+  ![](/image.png)
+  # Heading h1a
+  Heading h1b
+  ===========
+  ## Heading h2a
+  Heading h2b
+  -----------
+  ### Heading h3
+  #### Heading h4
+  ##### Heading h5
+  ###### Heading h6
+  ___Boltalic 1___, __*Boltalic 2*__, *__Boltalic 3__*, _**Boltalic 4**_, **_Boltalic 5_** and ***Boltalic 6***
+  __Bold 1__ and _*Bold 2*_
+  _Italic 1_ and *Italic 2*
+  ...
+.. code-block :: bash
+
+  user@user-PC-name:~$ ./-wiki.py test.md
+  {{quote|This file will be translated from MEDIAWIKI to MARKDOWN.}}
+  [[File:image.png|thumb|Sample image.]]
+  [[File:image.png|Sample image.]]
+  [[File:image.png]]
+  = Heading h1a =
+  =Heading h1b=
+  == Heading h2a ==
+  ==Heading h2b==
+  === Heading h3 ===
+  ==== Heading h4 ====
+  ===== Heading h5 =====
+  ====== Heading h6 ======
+  '''''Boltalic 1''''', '''''Boltalic 2''''', '''''Boltalic 3''''', '''''Boltalic 4''''', '''''Boltalic 5''''' and '''''Boltalic 6'''''
+  '''Bold 1''' and '''Bold 2'''
+  ''Italic 1'' and ''Italic 2''
+  ...
 Because it is still just a model, for a while, it will run in the form of a shell command. I plan in the future to make it either:
  * A software for Windows, Linux and, if possible, macOS by using Python's user interface libraries like *PySimpleGUI* or *tkInter*;
  * An application for Android and iOS;
@@ -306,8 +396,16 @@ To-do
 -----
 * Tables and sheets;
 * More detailing of media (images, audios, videos, etc.);
+* Blockquotes inside blockquotes ``>>`` for MediaWiki;
 * re.sub **not** grabbing inside blockcodes (avoid ``def __init__`` becoming ``def '''init'''``);
-* Output exporting inside code (no bash/Terminal's ``>`` function).
+* Output exporting inside code (no bash/Terminal's ``>`` function);
+* Possibly... support for reStructuredText?
+
+
+Impossible
+----------
+* ``<nowiki></nowiki>`` equivalent for Markdown;
+* Mermaid diagrams for MediaWiki.
 
 
 Copyright
