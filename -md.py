@@ -22,40 +22,32 @@ except: # ← If the file either does not exist, it's not text type or anything 
 # ↓ NOTE: Since Python reads from left to right and from up to down, to avoid incorrect rendering, the ccodes will run from the highest to the lowest of characters' amount. "Bolditalic" first, italic last. Heading h6 first, heading h1 last.
 
 # ↓ Enumerate sub-items
-if "##" in text: # ←  Will only be done if the specified string exists in text
- text=re.sub(r"\n##(.+?)",r"\n   1.\1",text)
+text=re.sub(r"\n##(.+?)",r"\n   1.\1",text)
 
 # ↓ Enumerate lists
-if "#" in text:
- text=re.sub(r"\n#(.+?)",r"\n1.\1",text)
+text=re.sub(r"\n#(.+?)",r"\n1.\1",text)
 
 # ↓ Heading h6 formatting
-if "======" in text:
- text=re.sub(r"====== (.+?) ======",r"###### \1",text)
- text=re.sub(r"======(.+?)======",r"###### \1",text)
+text=re.sub(r"====== (.+?) ======",r"###### \1",text)
+text=re.sub(r"======(.+?)======",r"###### \1",text)
  
 # ↓ Heading h5 formatting
-if "=====" in text:
- text=re.sub(r"===== (.+?) =====",r"##### \1",text)
- text=re.sub(r"=====(.+?)=====",r"##### \1",text)
+text=re.sub(r"===== (.+?) =====",r"##### \1",text)
+text=re.sub(r"=====(.+?)=====",r"##### \1",text)
  
 # ↓ Heading h4 formatting
-if "====" in text:
- text=re.sub(r"==== (.+?) ====",r"#### \1",text)
- text=re.sub(r"====(.+?)====",r"#### \1",text)
+text=re.sub(r"==== (.+?) ====",r"#### \1",text)
+text=re.sub(r"====(.+?)====",r"#### \1",text)
 
 # ↓ Heading h3 formatting
-if "===" in text:
- text=re.sub(r"=== (.+?) ===",r"### \1",text)
- text=re.sub(r"===(.+?)===",r"### \1",text)
+text=re.sub(r"=== (.+?) ===",r"### \1",text)
+text=re.sub(r"===(.+?)===",r"### \1",text)
 
 # ↓ Heading h2 formatting
-if "==" in text:
- text=re.sub(r"== (.+?) ==",r"## \1",text)
+text=re.sub(r"== (.+?) ==",r"## \1",text)
 
 # ↓ Heading h1 formatting
-if "=" in text:
- text=re.sub(r"= (.+?) =",r"# \1",text)
+text=re.sub(r"= (.+?) =",r"# \1",text)
  
 # ↓ Alternate h1 and h2 formattings
 def h1h2alt(txt):
@@ -72,62 +64,46 @@ def h1h2alt(txt):
   size=max(len(header),4)
   return f"{header}\n{char*size}"
  return pattern.sub(subst,txt)
-if "==" in text or "=" in text:
- text=h1h2alt(text)
+text=h1h2alt(text)
 
 # ↓ Bold and italic formatting
-if "'''''" in text:
- text=re.sub(r"'''''(.+?)'''''",r"___\1___",text)
+text=re.sub(r"'''''(.+?)'''''",r"___\1___",text)
 
 # ↓ Bold formatting
-if "'''" in text:
- text=re.sub(r"'''(.+?)'''",r"__\1__",text)
+text=re.sub(r"'''(.+?)'''",r"__\1__",text)
 
 # ↓ Italic formatting
-if "''" in text:
- text=re.sub(r"''(.+?)''",r"_\1_",text)
+text=re.sub(r"''(.+?)''",r"_\1_",text)
 
 # ↓ Bulleted sub-items
 # ↓ NOTE: The way the re library works, the "*" in the pattern to be grabbed must be written as "\*" to avoid confusions. Putting simply an "*" will throw an exception.
-if "** " in text:
- text=re.sub(r"\n\*\* (.+?)",r"\n   * \1",text)
+text=re.sub(r"\n\*\* (.+?)",r"\n   * \1",text)
 
 # ↓ Striked through text
-if "</s>" in text:
- text=re.sub(r"<s>(.+?)</s>",r"~\1~",text)
+text=re.sub(r"<s>(.+?)</s>",r"~\1~",text)
 
 # ↓ Blockcode field with syntax highlight
-if "<syntaxhighlight lang" in text:
- text=re.sub(r'<syntaxhighlight lang="(.+?)">\n([^.$]+?)\n</syntaxhighlight>',r"```\1\n\2\n```",text,flags=re.MULTILINE)
+text=re.sub(r'<syntaxhighlight lang="(.+?)">\n([^.$]+?)\n</syntaxhighlight>',r"```\1\n\2\n```",text,flags=re.MULTILINE)
 
 # ↓ Normal blockcode field
-if "</syntaxhighlight>" in text:
- text=re.sub(r"<syntaxhighlight>\n([^.$]+?)\n</syntaxhighlight>",r"```\n\1\n```",text,flags=re.MULTILINE)
-if "</pre>" in text:
- text=re.sub(r"<pre>\n([^.$]+?)\n</pre>",r"```\n\1\n```",text,flags=re.MULTILINE)
+text=re.sub(r"<syntaxhighlight>\n([^.$]+?)\n</syntaxhighlight>",r"```\n\1\n```",text,flags=re.MULTILINE)
+text=re.sub(r"<pre>\n([^.$]+?)\n</pre>",r"```\n\1\n```",text,flags=re.MULTILINE)
 
 # ↓ Inline code field
-if "</code>" in text:
- text=re.sub(r"<code>(.+?)</code>",r"`\1`",text)
+text=re.sub(r"<code>(.+?)</code>",r"`\1`",text)
  
 # ↓ Quotes field
-if "{{quote|" in text:
- text=re.sub(r"{{quote\|(.+?)}}\n",r">\1\n\n",text)
-if "<blockquote>" in text and "</blockquote>" in text:
- text=re.sub(r"<blockquote>(.+?)</blockquote>\n",r">\1\n\n",text)
+text=re.sub(r"{{quote\|(.+?)}}\n",r">\1\n\n",text)
+text=re.sub(r"<blockquote>(.+?)</blockquote>\n",r">\1\n\n",text)
 
 # ↓ External link
-if "https" in text:
- text=re.sub(r'\[(https?://\S+?)\s+(.+?)\]', r'[\2](\1)',text)
-if "http" in text:
- text=re.sub(r'\[(http?://\S+?)\s+(.+?)\]', r'[\2](\1)',text)
+text=re.sub(r'\[(https?://\S+?)\s+(.+?)\]', r'[\2](\1)',text)
+text=re.sub(r'\[(http?://\S+?)\s+(.+?)\]', r'[\2](\1)',text)
  
 # ↓ Image file
-if "[[File:" in text and "|" in text: # ← With an alt text
- text=re.sub(r"\[\[File?:(.+?)\|(.+?)\|(.+?)]]",r'![](/\1 "\3")',text)
- text=re.sub(r"\[\[File?:(.+?)\|(.+?)]]",r'![\2](/\1)',text)
-if "[[File:" in text: # ← Without alt text
- text=re.sub(r"\[\[File?:(.+?)]]",r"![](/\1)",text)
+text=re.sub(r"\[\[File?:(.+?)\|(.+?)\|(.+?)]]",r'![](/\1 "\3")',text)
+text=re.sub(r"\[\[File?:(.+?)\|(.+?)]]",r'![\2](/\1)',text)
+text=re.sub(r"\[\[File?:(.+?)]]",r"![](/\1)",text)
 
 
 print(text)
