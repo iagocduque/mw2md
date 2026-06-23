@@ -21,8 +21,7 @@ Content
 4. `License <#license>`_
 5. `Contributing <#contributing>`_
 
- * `Exporting <#exporting>`_
- * `Other <#other>`_
+ * `To-do <#to-do>`_
 
 6. `Copyright <#copyright>`_
 
@@ -299,20 +298,16 @@ If you would like to contribute to this project, you should fork this repository
 
 Or, if you'd like, download one of the ".py" files (either *-md* or *-wiki*) and test them in a random text file. The ".py" files should be executed in your operating system's shell.
 
+ *Question. Why did you put a "contributing" section inside the README? You can create a separate "CONTRIBUTING.rst" file and a new tab is created.*
+Why? Because the "new tabs" for special files (other than README) still do not exist for GitHub's Android/iOS apps. They only exist, for mobile, when accessing the same's website in mobile browsers. Which is a complete absurd, because GitHub is owned, as a subsidiary, by the trillion-dollar valuable Microsoft now.
 
-Exporting
----------
-.. image:: /images/exporting.png
-   :alt: Procedure of the ">" command in Bash.
-There should be a command inside the .py source codes that exports the output. A command in bash (Linux Terminal) exists that exports the arguments outputs to another file: ``commands > output.txt``. The ">" writes the outputs inside the file. The equivalent for *Windows PowerShell* (same for cmd and MS-DOS) is unknown.
 
-But there is a problem: bash's ">" replaces the output file if it already exists. There should be an exception inside the ".py" source-code that throws/raises an error if the output file already exists.
-
-Other
+To-do
 -----
 * Tables and sheets;
 * More detailing of media (images, audios, videos, etc.);
-* re.sub **not** grabbing inside blockcodes (avoid ``def __init__`` becoming ``def '''init'''``).
+* re.sub **not** grabbing inside blockcodes (avoid ``def __init__`` becoming ``def '''init'''``);
+* Output exporting inside code (no bash/Terminal's ``>`` function).
 
 
 Copyright
