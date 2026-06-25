@@ -50,9 +50,9 @@ Functional Requirements
   '''Bold'''
   ''Italic''
   ...
-.. code-block :: bash
+.. code-block ::
 
-  user@user-PC-name:~$ ./-md.py test.wiki
+  root@ubuntu:/home/user/Documents# ./-md.py test.wiki
   > This file will be translated from MEDIAWIKI to MARKDOWN.
   
   > This file will be translated from MEDIAWIKI to MARKDOWN.
@@ -171,9 +171,9 @@ Non-functional Requirements
   __Bold 1__ and _*Bold 2*_
   _Italic 1_ and *Italic 2*
   ...
-.. code-block :: bash
+.. code-block ::
 
-  user@user-PC-name:~$ ./-wiki.py test.md
+  root@ubuntu:/home/superuser/Documents# ./-wiki.py test.md
   {{quote|This file will be translated from MEDIAWIKI to MARKDOWN.}}
   [[File:image.png|thumb|Sample image.]]
   [[File:image.png|Sample image.]]
