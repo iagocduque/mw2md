@@ -200,7 +200,9 @@ Markup languages
 ================
 MediaWiki
 ---------
-.. image:: /images/mediawiki.svg
+.. image:: /images/mediawiki-white.svg#gh-dark-mode-only
+   :alt: MediaWiki's logo
+.. image:: /images/mediawiki-black.svg#gh-light-mode-only
    :alt: MediaWiki's logo
 
 This is the markup language used in multiple Wiki websites like `Wikipedia <http://en.wikipedia.org>`_, `FANDOM <http://fandom.com>`_, `wiki.gg <http://wiki.gg>`_, `Miraheze <http://miraheze.org>`_ and many others. The latter three are the main wiki hosters.
@@ -326,7 +328,9 @@ Here is my "wikiography" (pages I have created or updated), the best I can remem
 
 Markdown
 --------
-.. image:: /images/markdown.svg
+.. image:: /images/markdown-white.svg#gh-dark-mode-only
+   :alt: Markdown's logo
+.. image:: /images/markdown-black.svg#gh-light-mode-only
    :alt: Markdown's logo
 
 This is another markup language to create rich text by simply using a Notepad. It is used in GitHub (and other code versioning websites) for documents like README, CONTRIBUTING, LICENSE, CHANGELOG, MISSING, etc.
