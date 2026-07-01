@@ -1,7 +1,9 @@
 ===============================
 Markdown to MediaWiki Converter
 ===============================
-.. image:: /images/mw2md.png
+.. image:: /images/mw2md-white.png#gh-dark-mode-only
+   :alt: Banner
+.. image:: /images/mw2md-black.png#gh-light-mode-only
    :alt: Banner
 This software, written in *Python* using the "re" (regex) library, will handle documents' source-codes using either **Markdown** or **MediaWiki** markup languages and convert them based on changing regular expressions (commands) to highlight text.
 
